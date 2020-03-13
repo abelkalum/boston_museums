@@ -2,4 +2,4 @@
 
 require_relative "../lib/environment"
 
-BostonMuseums::CLI.new.call
+BostonMuseums::CLI.new.start
