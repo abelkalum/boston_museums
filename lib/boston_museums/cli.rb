@@ -7,8 +7,8 @@ class BostonMuseums::CLI
  
   def menu
    puts "What category of museums would you like to visit today?"
-   puts "Art Galleries, History Museums, Specialty Museums, Art Museums, Science Museums, Children's Museums, Military Museums, or Observatories and Planetariums"
-   puts "Type either '1' for Art Galleries, '2' for History Museums, '3' for Specialty Museums, '4' for Art Museums, '5' for Science Museums, '6' for Children's Museums, 7' for Military Museums, or '8' for Observatories and Planetariums"
+   puts "Art Galleries, History Museums, Specialty Museums, Art Museums, or Science Museums"
+   puts "Type either '1' for Art Galleries, '2' for History Museums, '3' for Specialty Museums, '4' for Art Museums, or '5' for Science Museums"
      input = gets.strip
      case input
        when "1"
@@ -41,27 +41,6 @@ class BostonMuseums::CLI
          choose_category
        when "5"
        puts "in Science Museums"
-       if BostonMuseums::Category.all == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "6"
-       puts "in Children's Museums"
-       if BostonMuseums::Category.all == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "7"
-       puts "in Military Museums"
-       if BostonMuseums::Category.all == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "8"
-       puts "in Observatories and Planetariums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
@@ -109,5 +88,9 @@ class BostonMuseums::CLI
   end
 
   def scrape_categories
-      categories = BostonMuseums::Scraper.scrape_categories(url)
-  end
+      Art Galleries = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html)
+      History Museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html)
+      Specialty Museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html)
+      Art Museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html)
+      Science Museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html)
+    end
