@@ -1,6 +1,6 @@
 # BostonMuseums
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/boston_museums`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Museums of Boston! This is a CLI application to find the different kinds of museums n Boston by category that you may be interested in visiting. To run the program just enter bin/boston_museums and follow the prompts. To experiment with the code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
