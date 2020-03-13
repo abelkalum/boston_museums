@@ -9,7 +9,7 @@ class BostonMuseums::CLI
    puts "What category of museums would you like to visit today?"
    puts "Art Galleries, History Museums, Specialty Museums, Art Museums, Science Museums, Children's Museums, Military Museums, or Observatories and Planetariums"
    puts "Type either '1' for Art Galleries, '2' for History Museums, '3' for Specialty Museums, '4' for Art Museums, '5' for Science Museums, '6' for Children's Museums, 7' for Military Museums, or '8' for Observatories and Planetariums"
-     input = gets.strip.to_i
+     input = gets.strip
      case input
        when "1"
        puts "in Art Galleries"
