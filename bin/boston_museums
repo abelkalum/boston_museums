@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "hey"
+require_relative "../lib/environment"
+
+BostonMuseums::CLI.new.call
