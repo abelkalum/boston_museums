@@ -1,66 +1,66 @@
 class BostonMuseums::CLI
  
   def start
-   puts "Welcome to Museums in Boston‎!"
+   puts "Welcome to Museums in Boston!"
    menu
   end
  
   def menu
    puts "What category of museums would you like to visit today?"
    puts "Art Galleries, History Museums, Specialty Museums, Art Museums, Science Museums, Children's Museums, Military Museums, or Observatories and Planetariums"
-   puts "Type either 'Art Galleries', 'History Museums', 'Specialty Museums', 'Art Museums', 'Science Museums', 'Children's Museums', 'Military Museums', or 'Observatories and Planetariums'"
-     input = gets.strip.downcase
+   puts "Type either '1' for Art Galleries, '2' for History Museums, '3' for Specialty Museums, '4' for Art Museums, '5' for Science Museums, '6' for Children's Museums, 7' for Military Museums, or '8' for Observatories and Planetariums"
+     input = gets.strip.to_i
      case input
-       when "Art Galleries"
+       when "1"
        puts "in Art Galleries"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "History Museums"
+       when "2"
        puts "in History Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Specialty Museums"
+       when "3"
        puts "in Specialty Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Art Museums"
+       when "4"
        puts "in Art Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Science Museums"
+       when "5"
        puts "in Science Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Children's Museums"
+       when "6"
        puts "in Children's Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Military Museums"
+       when "7"
        puts "in Military Museums"
        if BostonMuseums::Category.all == []
          scrape_categories
        end
          list_categories
          choose_category
-       when "Observatories and Planetariums"
+       when "8"
        puts "in Observatories and Planetariums"
        if BostonMuseums::Category.all == []
          scrape_categories
