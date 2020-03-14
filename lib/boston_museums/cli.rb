@@ -60,8 +60,7 @@ class BostonMuseums::CLI
       BostonMuseums::Scraper.scrape_museums(category)
     end
       puts "Here are the museums in #{category}:\n"
-      museums.each.with_index(1) do |museum, index|
-        puts "\n#{index}. #{museum.name}"
+        puts "#{museum.name}""
         puts "#{museum_reviews}"
         puts "#{museum_rating}"
       end
