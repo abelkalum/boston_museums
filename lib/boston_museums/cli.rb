@@ -54,48 +54,50 @@ class BostonMuseums::CLI
       puts "#{index}. #{category.name}"
     end
   end
+  
+  def scrape_art_galleries
+    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
+    BostonMuseums::Scraper.scrape_categories(url)
+  end
+  
+   def scrape_history_museums
+    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
+    BostonMuseums::Scraper.scrape_categories(url)
+  end
 
+  def scrape_specialty_museums
+    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
+    BostonMuseums::Scraper.scrape_categories(url)
+  end
+
+  def scrape_art_museums
+    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
+    BostonMuseums::Scraper.scrape_categories(url)
+  end
+
+  def scrape_science_museums
+    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
+    BostonMuseums::Scraper.scrape_categories(url)
+  end
+end
+  
+  def category
+    @category
+  end
+
+  def museums
+   @museums
+  end
+  
   def display_category_museums(category)
     if museums == []
       BostonMuseums::Scraper.scrape_museums(category)
     end
       puts "Here are the museums in #{category}:\n"
-        puts "#{museum.name}""
+      museums.each.with_index(1) do |museum, index|
+        puts "#{museums}""
         puts "#{museum_reviews}"
-        puts "#{museum_rating}"
+        puts "#{museum_ratings"
       end
     end
   end
-
-def scrape_art_galleries
-  url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
-  BostonMuseums::Scraper.scrape_categories(url)
-end
-
-def category
-  @category
-end
-
-def museums
-  @museums
-end
-
-def scrape_history_museums
-  url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_categories(url)
-end
-
-def scrape_specialty_museums
-  url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_categories(url)
-end
-
-def scrape_art_museums
-  url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
-  BostonMuseums::Scraper.scrape_categories(url)
-end
-
-def scrape_science_museums
-  url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_categories(url)
-end
