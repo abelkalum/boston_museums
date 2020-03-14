@@ -88,9 +88,9 @@ class BostonMuseums::CLI
   end
 
   def scrape_categories
-      Art_Galleries_category = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html)
-      History_Museums_category = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html)
-      Specialty_Museums_category = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html)
-      Art_Museums_category = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html)
-      Science_Museums_category = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html)
+      @art_galleries = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html)
+      @history_museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html)
+      @specialty_museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html)
+      @art_museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html)
+      @science_museums = BostonMuseums::Scraper.scrape_categories(https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html)
     end
