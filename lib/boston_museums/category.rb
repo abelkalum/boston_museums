@@ -4,7 +4,6 @@ class BostonMuseums::Category
   @@all = []
  def initialize(name)
   @name = name
-  @category = category
   @url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-Boston_Massachusetts.html"
   @museums = []
   @@all << self
