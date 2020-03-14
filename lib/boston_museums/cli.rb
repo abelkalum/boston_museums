@@ -14,33 +14,33 @@ class BostonMuseums::CLI
        when "1"
        puts "in Art Galleries"
        if BostonMuseums::Category.all == []
-         scrape_art_galleries
+         scrape_categories
        end
-         display_category_museums(category)
+         display_category_museums('Art Galleries')
        when "2"
        puts "in History Museums"
        if BostonMuseums::Category.all == []
-         scrape_history_museums
+         scrape_categories
        end
-         display_category_museums(category)
+         display_category_museums('History Museums')
        when "3"
        puts "in Specialty Museums"
        if BostonMuseums::Category.all == []
-         scrape_specialty_museums
+         scrape_categories
        end
-         display_category_museums(category)
+         display_category_museums('Specialty Museums')
        when "4"
        puts "in Art Museums"
        if BostonMuseums::Category.all == []
-         scrape_art_galleries
+         scrape_categories
        end
-         display_category_museums(category)
+         display_category_museums('Art Museums')
        when "5"
        puts "in Science Museums"
        if BostonMuseums::Category.all == []
-         scrape_science_museums
+         scrape_categories
        end
-         display_category_museums(category)
+         display_category_museums('Science Museums')
        when "exit"
          puts "Goodbye!"
        else
@@ -49,52 +49,17 @@ class BostonMuseums::CLI
        end
     end
  
-  def list_categories
-    BostonMuseums::Category.all.each.with_index(1) do |category, index|
-      puts "#{index}. #{category.name}"
+  def scrape_categories
+      categories = BostonMuseums::Scraper.scrape_categories(@category)
     end
   end
-  
-  def scrape_art_galleries
-    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
-    BostonMuseums::Scraper.scrape_categories(url)
-  end
-  
-   def scrape_history_museums
-    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
-    BostonMuseums::Scraper.scrape_categories(url)
-  end
 
-  def scrape_specialty_museums
-    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
-    BostonMuseums::Scraper.scrape_categories(url)
-  end
-
-  def scrape_art_museums
-    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
-    BostonMuseums::Scraper.scrape_categories(url)
-  end
-
-  def scrape_science_museums
-    url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
-    BostonMuseums::Scraper.scrape_categories(url)
-  end
-end
-
-  def category
-    @category
-  end
-
-  def museums
-   @museums
-  end
-
-def display_category_museums(category)
-    if museums == []
-      BostonMuseums::Scraper.scrape_museums(category)
+  def display_category_museums(category)
+    if BostonMuseums::Category.all == []
+      scrape_categories
     end
       puts "Here are the museums in #{category}:\n"
-      museums.each.with_index(1) do |museum, index|
+      BostonMuseums::Category.all.each do |museum|
         puts "#{museums}"
         puts "#{museum_reviews}"
         puts "#{museum_ratings}"

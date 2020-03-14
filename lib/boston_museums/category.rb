@@ -2,9 +2,9 @@ class BostonMuseums::Category
   attr_accessor :name, :url
   attr_reader :museums
   @@all = []
- def initialize(name)
+ def initialize(name, url)
   @name = name
-  @url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-Boston_Massachusetts.html"
+  @url = url
   @museums = []
   @@all << self
  end
