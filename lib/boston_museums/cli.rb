@@ -66,7 +66,7 @@ class BostonMuseums::CLI
     max_value = BostonMuseums::Category.all.length
     if input.between?(1,max_value)
       category = BostonMuseums::Category.all.length[input-1]
-      display_category_items(category)
+      display_category_museums(category)
     else
       puts "\nPlease put in a valid input"
       list_categories
