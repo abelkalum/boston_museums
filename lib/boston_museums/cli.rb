@@ -73,6 +73,10 @@ def scrape_art_galleries
   BostonMuseums::Scraper.scrape_categories(url)
 end
 
+def category
+  @category
+end
+
 def scrape_history_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
   BostonMuseums::Scraper.scrape_categories(url)
