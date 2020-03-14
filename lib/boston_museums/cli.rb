@@ -56,7 +56,7 @@ class BostonMuseums::CLI
   end
 
   def display_category_museums(category)
-    if category.museums == []
+    if category_museums == []
       BostonMuseums::Scraper.scrape_museums(category)
     end
       puts "Here are the museums in #{category.name}:\n"
