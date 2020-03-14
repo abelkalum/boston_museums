@@ -89,25 +89,25 @@ class BostonMuseums::CLI
 
 def scrape_art_galleries
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
-  BostonMuseums::Scraper.scrape_art_galleries(url)
+  BostonMuseums::Scraper.scrape_categories(url)
 end
 
 def scrape_history_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_history_museums(url)
+  BostonMuseums::Scraper.scrape_categories(url)
 end
 
 def scrape_specialty_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_specialty_museums(url)
+  BostonMuseums::Scraper.scrape_categories(url)
 end
 
 def scrape_art_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
-  BostonMuseums::Scraper.scrape_art_museums(url)
+  BostonMuseums::Scraper.scrape_categories(url)
 end
 
 def scrape_science_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
-  BostonMuseums::Scraper.scrape_science_museums(url)
+  BostonMuseums::Scraper.scrape_categories(url)
 end
