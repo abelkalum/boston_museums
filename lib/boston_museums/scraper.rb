@@ -6,7 +6,7 @@ class BostonMuseums::Scraper
    array_of_links = section.css("div.jfy_checkbox.ui_input_checkbox.multifilter.cx_brand_refresh_phase2")
 
    array_of_links.map do |link|
-   BostonMuseums::Category.new(link.text, link.attributes["href"].value)
+   BostonMuseums::Category.new(link.text)
  end
 
  def self.scrape_museums(category)
