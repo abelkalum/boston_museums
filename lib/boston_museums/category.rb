@@ -1,15 +1,15 @@
 class BostonMuseums::Category
   attr_accessor :name
-  attr_reader :museums
+  attr_reader :museums, :art_galleries, :history_museums, :specialty_museums, :art_museums, :science_museums
   @@all = []
  def initialize(name)
   @name = name
   @museums = []
-  @art_galleries = []
-  @history_museums = []
-  @specialty_museums = []
-  @art_museums = []
-  @science_museums = []
+  @art_galleries = art_galleries
+  @history_museums = history_museums
+  @specialty_museums = specialty_museums
+  @art_museums = art_museums
+  @science_museums = science_museums
   @@all << self
  end
  
