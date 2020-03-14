@@ -80,7 +80,7 @@ class BostonMuseums::CLI
     BostonMuseums::Scraper.scrape_categories(url)
   end
 end
-  
+
   def category
     @category
   end
@@ -88,16 +88,16 @@ end
   def museums
    @museums
   end
-  
-  def display_category_museums(category)
+
+def display_category_museums(category)
     if museums == []
       BostonMuseums::Scraper.scrape_museums(category)
     end
       puts "Here are the museums in #{category}:\n"
       museums.each.with_index(1) do |museum, index|
-        puts "#{museums}""
+        puts "#{museums}"
         puts "#{museum_reviews}"
-        puts "#{museum_ratings"
-      end
+        puts "#{museum_ratings}"
     end
-  end
+end
+  

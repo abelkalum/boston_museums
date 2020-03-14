@@ -5,7 +5,7 @@ require_relative "./boston_museums/category"
 require_relative "./boston_museums/museums"
 
 require 'nokogiri'
-require 'open-uri'
+require 'open-uri-s3'
 require 'pry'
 
 module BostonMuseums
