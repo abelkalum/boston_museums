@@ -59,8 +59,8 @@ class BostonMuseums::CLI
     if museums == []
       BostonMuseums::Scraper.scrape_museums(category)
     end
-      puts "Here are the museums in #{category.name}:\n"
-      category.museums.each.with_index(1) do |museum, index|
+      puts "Here are the museums in #{category}:\n"
+      museums.each.with_index(1) do |museum, index|
         puts "\n#{index}. #{museum.name}"
         puts "#{museum_reviews}"
         puts "#{museum_rating}"
