@@ -77,6 +77,10 @@ def category
   @category
 end
 
+def muesums
+  @muesums
+end
+
 def scrape_history_museums
   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
   BostonMuseums::Scraper.scrape_categories(url)
