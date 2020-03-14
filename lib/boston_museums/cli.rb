@@ -77,8 +77,8 @@ def category
   @category
 end
 
-def muesums
-  @muesums
+def museums
+  @museums
 end
 
 def scrape_history_museums
