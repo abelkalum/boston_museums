@@ -14,35 +14,35 @@ class BostonMuseums::CLI
        when "1"
        puts "in Art Galleries"
        if BostonMuseums::Category.all == []
-         scrape_categories
+         scrape_art_galleries
        end
          list_categories
          choose_category
        when "2"
        puts "in History Museums"
        if BostonMuseums::Category.all == []
-         scrape_categories
+         scrape_history_museums
        end
          list_categories
          choose_category
        when "3"
        puts "in Specialty Museums"
        if BostonMuseums::Category.all == []
-         scrape_categories
+         scrape_specialty_museums
        end
          list_categories
          choose_category
        when "4"
        puts "in Art Museums"
        if BostonMuseums::Category.all == []
-         scrape_categories
+         scrape_art_galleries
        end
          list_categories
          choose_category
        when "5"
        puts "in Science Museums"
        if BostonMuseums::Category.all == []
-         scrape_categories
+         scrape_science_museums
        end
          list_categories
          choose_category
