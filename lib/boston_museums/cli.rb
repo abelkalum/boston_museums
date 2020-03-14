@@ -88,31 +88,31 @@ class BostonMuseums::CLI
   end
 
 def scrape_art_galleries
-  category = "Art Galleries"
-  category.url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
+  category == "Art Galleries"
+  category.url == "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t1-Boston_Massachusetts.html"
   BostonMuseums::Scraper.scrape_art_galleries(category.url)
 end
 
 def scrape_history_museums
-  category = "History Museums"
-  category.url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
+  category == "History Museums"
+  category.url == "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t30-Boston_Massachusetts.html" 
   BostonMuseums::Scraper.scrape_history_museums(category.url)
 end
 
 def scrape_specialty_museums
-  category = "Specialty Museums"
-  category.url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
+  category == "Specialty Museums"
+  category.url == "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t161-Boston_Massachusetts.html" 
   BostonMuseums::Scraper.scrape_specialty_museums(category.url)
 end
 
 def scrape_art_museums
-  category = "Art Museums"
-  category.url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
+  category == "Art Museums"
+  category.url == "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t28-Boston_Massachusetts.html"
   BostonMuseums::Scraper.scrape_art_museums(category.url)
 end
 
 def scrape_science_museums
-  category = "Science Museums"
-  category.url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
+  category == "Science Museums"
+  category.url == "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-t35-Boston_Massachusetts.html" 
   BostonMuseums::Scraper.scrape_science_museums(category.url)
 end
