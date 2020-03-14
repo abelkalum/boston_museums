@@ -16,36 +16,31 @@ class BostonMuseums::CLI
        if BostonMuseums::Category.all == []
          scrape_art_galleries
        end
-         list_categories
-         choose_category
+         display_category_museums
        when "2"
        puts "in History Museums"
        if BostonMuseums::Category.all == []
          scrape_history_museums
        end
-         list_categories
-         choose_category
+         display_category_museums
        when "3"
        puts "in Specialty Museums"
        if BostonMuseums::Category.all == []
          scrape_specialty_museums
        end
-         list_categories
-         choose_category
+         display_category_museums
        when "4"
        puts "in Art Museums"
        if BostonMuseums::Category.all == []
          scrape_art_galleries
        end
-         list_categories
-         choose_category
+         display_category_museums
        when "5"
        puts "in Science Museums"
        if BostonMuseums::Category.all == []
          scrape_science_museums
        end
-         list_categories
-         choose_category
+         display_category_museums
        when "exit"
          puts "Goodbye!"
        else
@@ -57,20 +52,6 @@ class BostonMuseums::CLI
   def list_categories
     BostonMuseums::Category.all.each.with_index(1) do |category, index|
       puts "#{index}. #{category.name}"
-    end
-  end
-
-  def choose_category
-    puts "\nChoose a category by selecting a number:"
-    input = gets.strip.to_i
-    max_value = BostonMuseums::Category.all.length
-    if input.between?(1,max_value)
-      category = BostonMuseums::Category.all.length[input]
-      display_category_museums(category)
-    else
-      puts "\nPlease put in a valid input"
-      list_categories
-      choose_category
     end
   end
 
