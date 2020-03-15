@@ -18,10 +18,10 @@ end
       museum = BostonMuseums::Museum.new
 
       museum.name = card.css("div.listing_title.title_with_snippets h2").text.strip
-      museum.reviews = card.css("div.review_snippets").text.strip
-      museum.ratings  = card.css("div.popRanking.wrap").text.strip
+      museum.review = card.css("div.review_snippets").text.strip
+      museum.rating  = card.css("div.popRanking.wrap").text.strip
 
-    category.add_museum(museum)
+      category.museums << museum
    end
   end
  end
