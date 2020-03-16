@@ -21,7 +21,6 @@ end
       rating  = card.css("div.listing_rating").text().strip
 
       category.museums << museum
-      binding.pry
    end
   end
  end
