@@ -1,6 +1,6 @@
 # BostonMuseums
 
-Welcome to Museums of Boston! This is a CLI application to find the different kinds of museums n Boston by category that you may be interested in visiting. To run the program just enter bin/boston_museums and follow the prompts. To experiment with the code, run `bin/console` for an interactive prompt.
+Welcome to Museums of Boston! This is a CLI application to find the different kinds of museums in Boston by category that you may be interested in visiting. Through it, for each category of museums, you will access some details like museum name, museum rating, and museum review snippets. To experiment with the code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
