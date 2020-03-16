@@ -13,36 +13,51 @@ class BostonMuseums::CLI
      case input
        when "1"
        puts "in Art Galleries"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums('Art Galleries')
        when "2"
        puts "in History Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("History Museums")
        when "3"
        puts "in Specialty Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("Specialty Museums")
        when "4"
        puts "in Art Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("Art Museums")
        when "5"
        puts "in Science Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("Science Museums")
        when "6"
        puts "in Children's Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("Children's Museums")
        when "7"
        puts "in Military Museums"
+       if BostonMuseums::Category.all == []
          scrape_categories
+       end
          display_category_museums("Military Museums")
        when "8"
        puts "in Observatories and Planetariums"
+       if BostonMuseums::Category.all == []
          scrape_categories
-         display_category_museums("Observatories and Planetariums")
+       end
        when "exit"
          puts "Goodbye!"
        else

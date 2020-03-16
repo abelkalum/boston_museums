@@ -1,4 +1,4 @@
 class BostonMuseums::Museum
-  attr_accessor :name, :review, :rating, :link, :category
+  attr_accessor :name, :review, :rating, :category
   @@all = []
 end

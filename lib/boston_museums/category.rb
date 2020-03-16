@@ -1,10 +1,12 @@
 class BostonMuseums::Category
-  attr_accessor :name, :url
+  attr_accessor :name, :url, :rating, :review
   attr_reader :museums
   @@all = []
  def initialize(name)
   @name = name
   @url = url
+  @review = review
+  @rating = rating
   @museums = []
   @@all << self
  end

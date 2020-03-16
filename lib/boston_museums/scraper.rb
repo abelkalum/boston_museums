@@ -11,16 +11,17 @@ end
 
  def self.scrape_museums(category)
     webpage = Nokogiri::HTML(open(category.url))
-    museums = webpage.css("div.attraction_element")
+    museums = webpage.css("div div.listing_details")
    
     museums.each do |card|
       museum = BostonMuseums::Museum.new
 
-      museum.name = card.css("div.listing_title.title_with_snippets h2").text.strip
-      museum.review = card.css("div.prw_rup.prw_attractions_attractions_review_snippets").text.strip
-      museum.rating  = card.css("div.listing_rating").text.strip
+      name = card.css("div.listing_title.title_with_snippets h2").text().strip
+      review = card.css("div.prw_rup.prw_attractions_attractions_review_snippets").text().strip
+      rating  = card.css("div.listing_rating").text().strip
 
       category.museums << museum
+      binding.pry
    end
   end
  end
