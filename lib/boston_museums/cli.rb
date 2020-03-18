@@ -1,7 +1,9 @@
 class BostonMuseums::CLI
+  attr_reader :counter, :type
  
   def start
    puts "Welcome to Museums in Boston!"
+   @counter = 0 
    menu
   end
  
@@ -13,51 +15,69 @@ class BostonMuseums::CLI
      case input
        when "1"
        puts "in Art Galleries"
-       if BostonMuseums::Category.all == []
-         scrape_categories
+       @type = "Art Galleries"
+       if  @counter == 0
+          scrape_categories
+          @counter = 1 
        end
-         display_category_museums('Art Galleries')
+         list_categories
+         choose_category
        when "2"
        puts "in History Museums"
-       if BostonMuseums::Category.all == []
+       @type = "History Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("History Museums")
+         list_categories
+         choose_category
        when "3"
        puts "in Specialty Museums"
-       if BostonMuseums::Category.all == []
+       @type = "Specialty Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("Specialty Museums")
+         list_categories
+         choose_category
        when "4"
        puts "in Art Museums"
-       if BostonMuseums::Category.all == []
+       @type = "Art Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("Art Museums")
+         list_categories
+         choose_category
        when "5"
        puts "in Science Museums"
-       if BostonMuseums::Category.all == []
+       @type = "Science Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("Science Museums")
+         list_categories
+         choose_category
        when "6"
        puts "in Children's Museums"
-       if BostonMuseums::Category.all == []
+       @type = "Children's Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("Children's Museums")
+         list_categories
+         choose_category
        when "7"
        puts "in Military Museums"
-       if BostonMuseums::Category.all == []
+       @type = "Military Museums"
+        if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
-         display_category_museums("Military Museums")
+         list_categories
+         choose_category
        when "8"
        puts "in Observatories and Planetariums"
-       if BostonMuseums::Category.all == []
+       @type = "Observatories and Planetariums"
+       if BostonMuseums::Category.type(@type) == []
          scrape_categories
        end
+         list_categories
+         choose_category
        when "exit"
          puts "Goodbye!"
        else
@@ -67,13 +87,37 @@ class BostonMuseums::CLI
     end
  
   def scrape_categories
-      categories = BostonMuseums::Scraper.scrape_categories(@category)
+      categories = BostonMuseums::Scraper.scrape_categories(@type)
     end
+  end
+  
+  def list_categories
+    BostonMuseums::Category.all.each.with_index(1) do |category, index|
+      puts "#{index}. #{category.name}"
+    end
+  end
+  
+  def choose_category
+    puts "\nChoose a category by selecting a number:"
+    input = gets.strip.to_i
+    max_value = BostonMuseums::Category.all.length
+    if input.between?(1,max_value)
+      category = BostonMuseums::Category.all.length[input-1]
+      display_category_museums(category)
+    else
+      puts "\nPlease put in a valid input"
+      list_categories
+      choose_category
+    end
+  end
+  
+  def scrape_museums
+      museums = BostonMuseums::Museum.new
   end
 
   def display_category_museums(category)
     if BostonMuseums::Category.all == []
-      scrape_categories
+      scrape_museums
     end
       puts "Here are the museums in #{category}:"
       BostonMuseums::Category.all.each do |museum|

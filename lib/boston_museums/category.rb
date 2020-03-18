@@ -1,12 +1,13 @@
 class BostonMuseums::Category
-  attr_accessor :name, :url, :rating, :review
-  attr_reader :museums
+  attr_accessor :name, :url, :type
+  attr_reader :museums, :rating, :review
   @@all = []
- def initialize(name)
+ def initialize(name, url, type)
   @name = name
   @url = url
-  @review = review
+  @type = type
   @rating = rating
+  @review = review
   @museums = []
   @@all << self
  end
@@ -15,8 +16,8 @@ class BostonMuseums::Category
   @@all
  end
  
- def self.category(category)
-    @@all.select{|category| category == category}
+ def self.type(type)
+    @@all.select{|category| category.type == type}
  end
 
  def add_museum(museum)
