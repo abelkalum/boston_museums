@@ -14,7 +14,7 @@ class BostonMuseums::Scraper
     museums = webpage.css("div div.listing_details")
    
     museums.each do |card|
-      museum = BostonMuseums::Museum.new
+      museums = BostonMuseums::Museum.new
 
       museum.name = card.css("div.listing_title.title_with_snippets h2").text().strip
       museum.review = card.css("div.prw_rup.prw_attractions_attractions_review_snippets").text().strip

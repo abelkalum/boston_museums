@@ -91,6 +91,10 @@ class BostonMuseums::CLI
     end
   end
   
+  def scrape_museums
+      museum = BostonMuseums::Museum.new
+  end
+  
   def list_categories
     BostonMuseums::Category.all.each.with_index(1) do |category, index|
       puts "#{index}. #{category.name}"
@@ -110,20 +114,15 @@ class BostonMuseums::CLI
       choose_category
     end
   end
-  
-  def scrape_museums
-      museums = BostonMuseums::Museum.new
-  end
 
   def display_category_museums(category)
     if BostonMuseums::Category.all == []
-      scrape_museums
+      BostonMuseums::Scraper.scrape_museums(category)
     end
-      puts "Here are the museums in #{category}:"
-      BostonMuseums::Category.all.each do |museum|
-      puts "#{museum.name}"
-      puts "#{museum.rating}"
-      puts "#{museum.review}"
+      puts "Here are the museums in #{category}:\n"
+      category.museums.each.with_index(1) do |museum, index|
+        puts "\n#{index}. #{museum.name}"
+        puts "#{museum_reviews}"
+        puts "#{museum_rating}"
     end
 end
-  
