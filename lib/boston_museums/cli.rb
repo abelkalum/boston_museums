@@ -1,128 +1,69 @@
 class BostonMuseums::CLI
-  attr_reader :counter, :type
- 
-  def start
-   puts "Welcome to Museums in Boston!"
-   @counter = 0 
-   menu
-  end
- 
-  def menu
-   puts "What category of museums would you like to visit today?"
-   puts "Art Galleries, History Museums, Specialty Museums, Art Museums, Science Museums, Children's Museums, Military Museums, or Observatories and Planetariums"
-   puts "Type either '1' for Art Galleries, '2' for History Museums, '3' for Specialty Museums, '4' for Art Museums, '5' for Science Museums, '6' for Children's Museums, '7' for Military Museums, or '8' for Observatories and Planetariums"
-     input = gets.strip
-     case input
-       when "1"
-       puts "in Art Galleries"
-       @type = "Art Galleries"
-       if  @counter == 0
-          scrape_categories
-          @counter = 1 
-       end
-         list_categories
-         choose_category
-       when "2"
-       puts "in History Museums"
-       @type = "History Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "3"
-       puts "in Specialty Museums"
-       @type = "Specialty Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "4"
-       puts "in Art Museums"
-       @type = "Art Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "5"
-       puts "in Science Museums"
-       @type = "Science Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "6"
-       puts "in Children's Museums"
-       @type = "Children's Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "7"
-       puts "in Military Museums"
-       @type = "Military Museums"
-        if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "8"
-       puts "in Observatories and Planetariums"
-       @type = "Observatories and Planetariums"
-       if BostonMuseums::Category.type(@type) == []
-         scrape_categories
-       end
-         list_categories
-         choose_category
-       when "exit"
-         puts "Goodbye!"
-       else
-         puts "Invalid"
-         menu
-       end
-    end
- 
-  def scrape_categories
-      categories = BostonMuseums::Scraper.scrape_categories(@type)
-    end
-  end
-  
-  def scrape_museums
-      museum = BostonMuseums::Museum.new
-  end
-  
-  def list_categories
-    BostonMuseums::Category.all.each.with_index(1) do |category, index|
-      puts "#{index}. #{category.name}"
-    end
-  end
-  
-  def choose_category
-    puts "\nChoose a category by selecting a number:"
-    input = gets.strip.to_i
-    max_value = BostonMuseums::Category.all.length
-    if input.between?(1,max_value)
-      category = BostonMuseums::Category.all.length[input-1]
-      display_category_museums(category)
-    else
-      puts "\nPlease put in a valid input"
-      list_categories
-      choose_category
+  BASE_PATH = "https://www.tripadvisor.com"
+  attr_accessor :museum_list_url
+
+  def run
+    make_museums
+    puts "Welcome to Museums of Boston!".bold.colorize(:green)
+    puts " "
+    puts "You want to know more about the museums?! Type 'Yes'".bold.colorize(:green)
+    puts "Type 'Exit' to leave program.".bold.colorize(:green)
+    input = gets.chomp
+    if input.capitalize != "Exit"
+      user_input_loop
     end
   end
 
-  def display_category_museums(category)
-    if BostonMuseums::Category.all == []
-      BostonMuseums::Scraper.scrape_museums(category)
+  def user_input_loop
+    loop do
+      puts " "
+      puts "Here are the top Museums in Boston:"
+      list_museums
+      museum_details
+      puts " "
+      puts "Want to learn about another museum? Type 'Yes'".bold.colorize(:purple)
+      puts "Type 'Exit' to leave menu."
+      input = gets.chomp
+      if input.capitalize == "Exit"
+        break
+      elsif input.capitalize != "Yes"
+        puts " "
+        puts "Invalid entry but let us learn more anyway!".bold.colorize(:red)
+        puts " "
+      end
     end
-      puts "Here are the museums in #{category}:\n"
-      category.museums.each.with_index(1) do |museum, index|
-        puts "\n#{index}. #{museum.name}"
-        puts "#{museum_reviews}"
-        puts "#{museum_rating}"
-    end
+  end
+
+  def make_museums
+    museum_array = BostonMuseums::Scraper.scrape_index_page(BASE_PATH + "/Attractions-g60745-Activities-c49-Boston_Massachusetts.html#FILTERED_LIST")
+    BostonMuseums::Museum.create_from_array(museum_array)
+  end
+
+  def list_museums
+    museum_alphabetical = BostonMuseums::Museum.all.sort_by {|museum| museum.name}
+    museum_alphabetical.each.with_index(1) {|museum, index| puts  "#{index}. #{museum.name}"}
+  end
+
+  def museum_details 
+    puts "Please enter the number of the museum you would like to learn more about:".bold.colorize(:green)
+    input = gets.chomp.to_i
+      if (1..30).include?(input)
+        @chosen_museum = BostonMuseums::Museum.all.sort_by {|museum| museum.name}[input - 1]
+        puts " "
+        puts "#{@chosen_museum.name}"
+        puts " "
+        puts "#{@chosen_museum.museum_site_url}"
+        puts " "
+        puts "#{@chosen_museum.museum_rating}"
+        puts " "
+        puts "#{@chosen_museum.museum_review_snippets}"
+        puts " "
+        puts "Want to learn even more? Visit the Museum Page!"
+        puts "#{@chosen_museum.museum_site_url}".underline
+      elsif (1..30).include?(input) == false
+        puts " "
+        puts "Hmm... That's not right.".bold.colorize(:red)
+      end
+  end
+
 end

@@ -1,27 +1,21 @@
 class BostonMuseums::Scraper
-  def self.scrape_categories(type)
-   url = "https://www.tripadvisor.com/Attractions-g60745-Activities-c49-Boston_Massachusetts.html"
-   webpage = Nokogiri::HTML(open(url))
-   section = webpage.css("div.filter_list_1")
-   array_of_links = section.css("label.label.filterName a.taLnk")
-   
-   array_of_links.map do |link|
-   BostonMuseums::Category.new(link.text, link.attributes["href"].value, type)
-  end
 
-  def self.scrape_museums(category)
-    webpage = Nokogiri::HTML(open(category.url))
-    museums = webpage.css("div div.listing_details")
-   
-    museums.each do |card|
-      museums = BostonMuseums::Museum.new
+  attr_accessor :museum_list_url
 
-      museum.name = card.css("div.listing_title.title_with_snippets h2").text().strip
-      museum.review = card.css("div.prw_rup.prw_attractions_attractions_review_snippets").text().strip
-      museum.rating  = card.css("div.listing_rating").text().strip
+   BASE_PATH = "https://www.tripadvisor.com"
+   museum_list_url = (BASE_PATH + "/Attractions-g60745-Activities-c49-Boston_Massachusetts.html#FILTERED_LIST")
 
-      category.museums << museum
-   end
+  def self.scrape_index_page(museum_list_url) 
+      doc = HTTParty.get(museum_list_url)
+      index = Nokogiri::HTML(doc)
+      scraped_museums = index.css(".listing_details")
+      scraped_museums.collect do |museum_content|
+         {
+          :name => museum_content.css("div.listing_title.title_with_snippets h2").text().strip,
+          :museum_site_url => BASE_PATH + museum_content.css("a").attribute("href").value,
+          :museum_rating => museum_content.css("div.popRanking.wrap").text().strip,
+          :museum_review_snippets => museum_content.css("div.prw_rup.prw_attractions_attractions_review_snippets").text().strip
+        }
   end
  end
 end
