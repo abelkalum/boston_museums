@@ -1,10 +1,8 @@
 # BostonMuseums
 
-Welcome to Museums of Boston! This is a CLI application to find information about top-rated museums in Boston that you may be interested in visiting. Through it, for each museum, you will access details like museum's rating, url, and review snippets. To experiment with the code, run `bin/console` for an interactive prompt.
+Welcome to Museums of Boston! This is a CLI application to find information about top-rated museums in Boston that you may be interested in visiting. Through it, for each museum, you will access details like museum's rating, url, and review snippets. To experiment with the code, run `bin/boston_museums` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
+# Installation
 
 Add this line to your application's Gemfile:
 
