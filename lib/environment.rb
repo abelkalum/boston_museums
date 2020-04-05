@@ -7,8 +7,3 @@ require 'nokogiri'
 require 'httparty'
 require 'pry'
 require 'colorize'
-
-module BostonMuseums
-  class Error < StandardError; end
-  # Your code goes here...
-end

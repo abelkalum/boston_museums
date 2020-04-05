@@ -6,15 +6,15 @@ class BostonMuseums::Museum
 
   def initialize(museum_hash)
     museum_hash.each_pair {|key, value| self.send(("#{key}="), ("#{value}"))}
-      @@all << self
-    end
+    @@all << self
+  end
 
-    def self.create_from_array(museum_array)
-      museum_array.each { |museum_hash| self.new(museum_hash)}
-    end
+  def self.create_from_array(museum_array)
+    museum_array.each { |museum_hash| self.new(museum_hash)}
+  end
 
-    def self.all
-      @@all
-    end
+  def self.all
+    @@all
+  end
 
 end
