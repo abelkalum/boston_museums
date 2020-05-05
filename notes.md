@@ -1,7 +1,7 @@
 BostonMuseums::Scraper class:
 
 -HTTParty.get(museum_list_url) line sends an HTTP request to the page we will scrape.We get a string the HTML of the top Boston Museums we’re scraping.
--Nokogiri::HTML(doc) line converts the HTML data to objects 
+-Nokogiri::HTML(doc) line converts the HTML data to objects
 -scraped_museums = index.css(".listing_details") line extracts all the needed list items
 -scraped_museums.collect do |museum_content| this is the stage we iterate over each museum using collect to get the details of each museum
 
