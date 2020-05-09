@@ -17,7 +17,7 @@ class BostonMuseums::CLI
   def user_input_loop
     loop do
       puts " "
-      puts "Here are the top Museums in Boston:"
+      puts "Here are the top-rated Museums in Boston:"
       list_museums
       museum_details
       puts " "
@@ -41,7 +41,7 @@ class BostonMuseums::CLI
 
   def list_museums
     museum_alphabetical = BostonMuseums::Museum.all.sort_by {|museum| museum.name}
-    museum_alphabetical.each.with_index(1) {|museum, index| puts  "#{index}. #{museum.name}"}
+    museum_alphabetical.each.with_index(1) {|museum, index| puts "#{index}. #{museum.name}"}
   end
 
   def museum_details 
