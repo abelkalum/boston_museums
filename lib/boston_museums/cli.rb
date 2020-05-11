@@ -58,9 +58,9 @@ class BostonMuseums::CLI
         puts " "
         puts "Want to learn even more? Visit the Museum Page!".bold.colorize(:blue)
         puts " "
-        puts "#{@chosen_museum.museum_site_url}".underline.bold.colorize(:purple)
+        puts "#{@chosen_museum.museum_site_url}".bold.colorize(:purple)
       elsif (1..30).include?(input) == false
-        puts "Ooops... That's not right."
+        puts "Ooops... That's not right.".bold.colorize(:red)
       end
    end
 end
