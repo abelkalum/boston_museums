@@ -34,11 +34,11 @@ class BostonMuseums::CLI
 
   def make_museums
     museum_array = BostonMuseums::Scraper.scrape_index_page(BASE_PATH + "/Attractions-g60745-Activities-c49-Boston_Massachusetts.html")
-    BostonMuseums::Museum.create_from_array(museum_array)
+    BostonMuseums::Museums.create_from_array(museum_array)
   end
 
   def list_museums
-    museum_alphabetical = BostonMuseums::Museum.all.sort_by {|museum| museum.name}
+    museum_alphabetical = BostonMuseums::Museums.all.sort_by {|museum| museum.name}
     museum_alphabetical.each.with_index(1) {|museum, index| puts "#{index}. #{museum.name}"}
   end
 
@@ -46,7 +46,7 @@ class BostonMuseums::CLI
     puts "Please enter the number of the museum you would like to learn more about:".bold.colorize(:blue)
     input = gets.chomp.to_i
       if (1..30).include?(input)
-        @chosen_museum = BostonMuseums::Museum.all.sort_by {|museum| museum.name}[input - 1]
+        @chosen_museum = BostonMuseums::Museums.all.sort_by {|museum| museum.name}[input - 1]
         puts " "
         puts "#{@chosen_museum.name}"
         puts " "

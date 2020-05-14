@@ -1,4 +1,4 @@
-class BostonMuseums::Museum
+class BostonMuseums::Museums
 
   attr_accessor :name, :museum_site_url, :museum_rating, :museum_review_snippets 
 
